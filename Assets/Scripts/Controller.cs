@@ -4,23 +4,17 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class Controller : MonoBehaviour {
+	private List<IKeyActionListener> m_keyActionListeners = new List<IKeyActionListener>();
 
-	// public delegate void KeyAction();
-	// public static event KeyAction OnFKeyDown;
-	[SerializeField] private IKeyActionListener m_keyActionListener;
-
-	void Awake () {
-		Assert.IsNotNull(m_keyActionListener);
+	public void AddKeyActionListener (IKeyActionListener p_keyActionListener) {
+		m_keyActionListeners.Add(p_keyActionListener);
 	}
 
 	void Update () {
-		// if (Input.GetKeyDown (KeyCode.F) && OnFKeyDown != null) {
-		// 	// do action
-		// 	OnFKeyDown();
-		// }
-
 		if (Input.GetKeyDown (KeyCode.F)) {
-			m_keyActionListener.OnKeyDown(KeyCode.F);
+			foreach (IKeyActionListener keyActionListener in m_keyActionListeners) {
+				keyActionListener.OnKeyDown(KeyCode.F);
+			}
 		}
 	}
 }
