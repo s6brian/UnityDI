@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DebugController : IKeyActionEvents {
-	const float DELAY = 0.5f;
+	const float DELAY = 0.1f;
 
 	private float m_lapsTime = DELAY;
 
