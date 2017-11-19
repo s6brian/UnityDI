@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class Controller : MonoBehaviour {
+	// you may also use dictionaries
+	// useful in case you want to remove certain listeners using key values
 	private List<IKeyActionListener> m_keyActionListeners = new List<IKeyActionListener>();
 
 	public void AddKeyActionListener (IKeyActionListener p_keyActionListener) {
